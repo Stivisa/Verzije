@@ -1,0 +1,49 @@
+~poslednja verzija nbs01.exe ,datum 2023-08-23
+
+PODEŠAVANJE
+-Kreirati i popuniti fajl .ini koji se mora nalaziti na lokaciji .exe fajla.
+-povratne informacije će biti na lokaciji .exe fajla
+-primer izgleda .ini fajla:
+[nbs]
+username = "username"
+password = "password"
+licence = "12345678-****-****-****-123456******"
+
+NAPOMENE
+-svaka firma treba imati svoj username,password,licence
+
+FORMATI ODGOVORA
+1.OdgovorKurs.csv format:
+Amount;ValidityDate(tj. datum promene nbs);
+-primer:
+117.2202;2023-08-23T00:00:00+02:00
+
+2.OdgovorFirma.csv format:
+-red za svaki račun koji firma ima
+BankCode;AccountNumber;ControlNumber;CompanyName;NationalIdentificationNumber(maticni broj);TaxIdentificationNumber(PIB);Address;City
+-primer:
+325;9500700012799;16;PREDUZEĆE ZA RAČUNARSKO PROGRAMIRANJE BARISTA NOVA DOO BEOGRAD (ZVEZDARA);20325763;105150329    ;IGNJATA STANIMIROVIĆA 1;BEOGRAD (ZVEZDARA)
+
+KORIŠĆENJE POJEDINAČNO
+-navedena su pokretanja iz terminala na lokaciji .exe fajla
+
+1. Tekuci srednji kurs eur u fajl "OdgovorKurs.txt" na lokaciji .exe fajla. Ne nadovezuje, uvek jedan red.
+-pokretanje
+".\nbs.exe kurs"
+
+2. Podaci o firmi u fajl "OdgovorFirma.txt" na lokaciji .exe fajla. Podaci su o jednoj firmi, moguce vise redova ako firma ima vise racuna.
+-pokretanje sa argumentom pib
+".\nbs.exe firmaPib 105150329"
+
+3. Podaci o firmi u fajl "OdgovorFirma.txt" na lokaciji .exe fajla. Podaci su o jednoj firmi, moguce vise redova ako firma ima vise racuna.
+-pokretanje sa argumentom maticni broj
+".\nbs.exe firmaMat 105150329"
+
+4. Podaci o firmama u fajl "OdgovorFirma.txt" na lokaciji .exe fajla. *Podaci su o *vise firmi, moguce vise redova ako firma ima vise racuna.
+-pokretanje sa argumentom pib
+.\nbs.exe firmaIme Barista  -vraca podatke o svim firmama koje imaju barista u nazivu
+.\nbs.exe firmaIme "Barista nova" -argument se prosledjuje sa navodnicima ako ima vise reci (bez ovoga nece raditi)
+
+5. Vraća podatke o firmi u fajl "OdgovorFirma.txt" na lokaciji .exe fajla. *Uvek jedan red, podaci o racunu. (Ako je korisno moze vracati i za sve racune.)
+-pokretanje sa argumentom racun (obavezno lepo "-" razdvojiti delove racuna)
+".\nbs.exe firmaRacun 325-9500700012799-16"
