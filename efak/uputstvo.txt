@@ -1,0 +1,87 @@
+~poslednja verzija efaktura04.exe ,datum 2023-05-07
+
+PODEŠAVANJE
+-Kreirati i popuniti fajl .ini koji se mora nalaziti na lokaciji .exe fajla.
+-ApiKey kopirati sa sajta efaktura, u podešavanjima, api menadžment, ključ za autentifikaciju. Api status treba biti aktivno.
+-FolderPath je lokacija gde su .xml fajlovi koje treba slati.
+-primer izgleda .ini fajla:
+[eFaktura]
+ApiKey = "12345678-****-****-****-123456******"
+FolderPath = "C:\Users\User1\Desktop\XML"
+VatFolderPath = "C:\Users\User1\Desktop\XMLvat"
+
+NAPOMENE
+-Fakture koje su za CRF, njihov naziv xml fajla počinje sa velikim slovom "B"
+-xml zbog različitih struktura (posebno 7.konačnih faktura, koje imaju ekstenziju na početku) trebaju imati <cbc:CustomizationID> ispred <cbc:ID> odakle se čita BrojDokumenta
+
+FORMATI FAJLOVA
+-Format "Odgovor.txt": BrojDokumenta;InvoiceID;PurchaseInvoiceID;SalesInvoiceID;ErrorMessage
+-Format "StatusSales.txt": SalesInvoiceId;Status
+-Format "Firme.txt" : BugetCompanyNumber;RegistrationCode;VatRegistrationCode;Name
+-Format "OdgovorPdv.txt" : BrojDokumenta;individualVatId;ErrorMessage
+-Format "OdgovorProdaja.txt"/"OdgovorNabavka.txt" (jedan red) : SalesInvoiceID;PurchaseInvoiceID;CreationDate;BrojRacuna;DatumIzdavanjaRacuna;DatumDospecaRacuna;TipDokumenta;
+    Komentar;DokumentValuta;BrojZaRutiranje;SifraDatumaPoreskeObaveze;BrojOsnovnogRacuna;DatumOsnovnogRacuna;BrojNarudzbenice;BrojTendera;BrojUgovora;PIBKupca;NazivKupca;
+    AdresaKupca;MestoKupca;PttKupca;ZemljaKupca;RSPIBkupca;VAT;NazivKupca;MatBrKupca;DatumIsporuke;PlaćanjeKod30;BrojRacuna;TekuciRnPlacanja;VrednostStavki;
+    VrednostOsnoviceUkupno;IznosRacuna;DatiRabat;AvansnoPlaceno;IznosZaPlacanje;
+
+KORIŠĆENJE POJEDINAČNO
+-navedena su pokretanja iz terminala na lokaciji .exe fajla
+
+1. Pošalji sve faktura .xml fajlove sa lokacije iz .ini FolderPath (ne prolazi kroz podfoldere). Povratne informacije će biti nadovezivane u fajl "Odgovor.txt". 
+-pokretanje
+".\efakturaDemo.exe PostAllSalesInvoiceFromFolder"
+
+2. Poslednji status sales (prodajne) faktura na odredjeni dan. Povratne informacije će biti nadovezivane u fajl "StatusSales.txt".
+-pozivanje bez prosledjivanja datuma uvek vraća statuse za jučerašnji dan
+".\efakturaDemo.exe SalesStatusOnDate"
+-moguće korišćenje i sa prosledjivanjem datuma u formatu YYYY-MM-DD
+".\efakturaDemo.exe SalesStatusOnDate 2023-01-18"
+
+3. Sve registrovane firme dohvata i smešta u fajl "Firme.txt".
+-pokretanje
+".\efakturaDemo.exe GetAllCompanies"
+-primer jednog reda iz fajla "Firme.txt":
+;20325763;105150329;BARISTA NOVA
+
+4. Slanje individualnog pdv za firme koje nemaju efakturu. Šalje sve .json fajlove iz .ini VatFolderPath. Povratne informacije nadovezuju u fajl "OdgovorPdv.txt". 
+-pokretanje
+".\efakturaDemo.exe PostAllVatIndividualFromFolder"
+
+5. Id svake prodajne/nabavne fakture tj salesID/purchaseID iz zadatog perioda i unetog statusa smešta u fajl status.txt (primer "Approved.txt" sadrži niz brojeva, svaki u novom redu)
+-svi validni postojeći statusi (ako se ne navede vraća sve): New,Draft,Sent,Mistake,Sending,Approved,Rejected,Cancelled,Storno
+-pokretanje podrazumevano vraća Approved(Odobrene) od 01-01 tekuće godine
+".\efakturaDemo.exe PostSalesInvoiceIds"
+-pokretanje sa argumentima
+".\efakturaDemo.exe PostSalesInvoiceIds Approved 2023-01-01 2023-02-22"
+-moguće izostaviti datum do (tada vraća sve do danas):
+".\efakturaDemo.exe PostSalesInvoiceIds Approved 2023-01-01"
+-moguće izostaviti datum od (tada vraća sve):
+".\efakturaDemo.exe prodajaXml Approved"
+
+6.Preuzimanje bitnih podataka iz xml faktura prodaje/nabavke, sa zadatim statusom i periodom. Povratne informacije nadovezuju u fajl "OdgovorProdaja.txt"/"OdgovorNabavka.txt".
+-svi validni postojeći statusi (ako se ne navede vraća sve): New,Draft,Sent,Mistake,Sending,Approved,Rejected,Cancelled,Storno
+-pokretanje podrazumevano status je Approved, a period je za jučerašnji datum
+".\efakturaDemo.exe prodajaXml"
+".\efakturaDemo.exe nabavkaXml"
+-pokretanje sa argumentima
+".\efakturaDemo.exe prodajaXml Approved 2023-01-01 2023-02-22"
+".\efakturaDemo.exe nabavkaXml Approved 2023-01-01 2023-02-22"
+-moguće izostaviti datum do (tada vraća sve do danas):
+".\efakturaDemo.exe prodajaXml Approved 2023-01-01"
+".\efakturaDemo.exe nabavkaXml Approved 2023-01-01"
+-moguće izostaviti datum od (tada vraća sve):
+".\efakturaDemo.exe prodajaXml Approved"
+".\efakturaDemo.exe nabavkaXml Approved"
+
+KORIŠĆENJE GRUPNO
+
+1. Spaja korišćenje 1. fakture .xml i 4. pdv individualni .json (isti folder, isti povratni .txt)
+Pošalji sve .xml i .json fajlove sa lokacije iz .ini FolderPath (ne prolazi kroz podfoldere). Povratne informacije će biti nadovezivane u fajl "Odgovor.txt". 
+-Format za .xml povratnu informaciju je isti u "Odgovor.txt": BrojDokumenta;InvoiceID;PurchaseInvoiceID;SalesInvoiceID;ErrorMessage
+-Format za .json povratnu informaciju je malo drugačiji u "Odgovor.txt": BrojDokumenta;individualVatId;"vat";"vat";ErrorMessage
+-pokretanje, ovo je defaultno/podrazumevano ponašanje
+".\efakturaDemo.exe"
+
+2. Spaja 2. preuzimanje sales statuse od juče i 3. dovata sve registrovane firme.
+-pokretanje
+".\efakturaDemo.exe Prijem"
