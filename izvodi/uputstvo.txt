@@ -1,0 +1,53 @@
+~poslednja verzija izvod01.exe ,datum 2023-04-16
+
+PODEŠAVANJE
+-Kreirati i popuniti fajl .ini koji se mora nalaziti na lokaciji .exe fajla.
+-u .ini popuniti lokacije gde su fajlovi izvoda koje treba slat
+-povratne informacije će biti na unesenoj lokaciji u .txt fajlu
+-takodje na toj lokaciji biće i folder Backup, gde se čuvaju obradjeni izvodi
+-primer izgleda .ini fajla:
+[izvod]
+HalcomIzvodPutanja = "C:\Users\Nikola\Desktop\HalcomIzvodi"
+PeximIzvodPutanja = "C:\Users\Nikola\Desktop\PeximIzvodi"
+AikIzvodiPutanja = "C:\Users\Nikola\Desktop\AikIzvodi"
+
+NAPOMENE
+-program za učitavanje izvoda koje korisnik ručno dohvata odgovarajućom bankovnom aplikacijom
+
+FORMATI ODGOVORA
+#polje(zaglavlje) znači da je iz zaglavlja i da će se ponavljati za sve stavke tog izvoda, inače je polje iz stavki
+
+*Halcom ima dokumentacija, txt formati 2. za stavke, 3. za zaglavlje
+1.IzvodHalcom.txt format: sve iz dokumentacije
+
+*Pexim ima dokumentaciju, xml fx2004, 134.str
+2.IzvodPexim.txt format: Stmtrs.Acctid(zaglavlje);Stmtrs.Stmtnumber(zaglavlje);Stmtrs.Trnlist.Stmttrn.Dtposted;Fitid;Benefit;Payeeinfo.Name;Payeeinfo.City;Payeeaccountinfo.Acctid;
+Trnamt;Purposecode;Curdef;Payeerefnumber;Payeerefmodel;Refnumber;Refmodel;
+
+*Aik nema dokumentacije, samo primer fajla
+3.IzvodAik.txt format: Partija(zaglavlje);BrojIzvoda(zaglavlje);DatumIzvoda(zaglavlje);NalogKorisnik;Mesto;VasBrojNaloga;BrojRacunaPrimaocaPosiljaoca;Opis;SifraPlacanja;
+SifraPlacanjaOpis;Duguje;Potrazuje;ModelZaduzenjaOdobrenja;PozivNaBrojZaduzenjaOdobrenja;ModelKorisnika;PozivNaBrojKorisnika;BrojZaReklamaciju;Referenca;Objasnjenje;DatumValute;
+
+KORIŠĆENJE POJEDINAČNO
+-navedena su pokretanja iz terminala na lokaciji .exe fajla
+
+1. Obradi .txt fajlove halcom programa (ne one sa završetkom "_cov.txt") sa lokacije iz .ini HalcomIzvodPutanja (ne prolazi kroz podfoldere). 
+Povratne informacije će biti nadovezivane u fajl "IzvodHalcom.txt". Sve .txt smešta u folder Backup.
+-pokretanje
+".\izvod.exe Halcom"
+
+2. Obradi .xml u formatu fx2004 fajlove pexim programa sa lokacije iz .ini PeximIzvodPutanja (ne prolazi kroz podfoldere). 
+Povratne informacije će biti nadovezivane u fajl "IzvodPexim.txt". Sve .txt smešta u folder Backup.
+-pokretanje
+".\izvod.exe Pexim"
+
+3. Obradi .xml fajlove formata Aik banke sa lokacije iz .ini AikIzvodPutanja (ne prolazi kroz podfoldere). 
+Povratne informacije će biti nadovezivane u fajl "AikPexim.txt". Sve .txt smešta u folder Backup.
+-pokretanje
+".\izvod.exe Aik"
+
+KORIŠĆENJE GRUPNO
+1. Objedinjuje 1.,2.,3. za firmu Medico Domus doo Niš. Treba podesiti u podesavanje.ini: HalcomIzvodPutanja, PeximIzvodPutanja, AikIzvodiPutanja.
+".\izvod.exe"
+ili
+".\izvod.exe Medico"
