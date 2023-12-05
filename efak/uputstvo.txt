@@ -11,7 +11,7 @@ FolderPath = "C:\Users\User1\Desktop\XML"
 VatFolderPath = "C:\Users\User1\Desktop\XMLvat"
 
 NAPOMENE
--Fakture koje su za CRF, njihov naziv xml fajla počinje sa velikim slovom "B"
+-Fakture koje su za CRF, njihov naziv xml fajla počinje sa velikim slovom "B" .
 -xml zbog različitih struktura (posebno 7.konačnih faktura, koje imaju ekstenziju na početku) trebaju imati <cbc:CustomizationID> ispred <cbc:ID> odakle se čita BrojDokumenta
 
 FORMATI FAJLOVA
@@ -28,6 +28,8 @@ KORIŠĆENJE POJEDINAČNO
 -navedena su pokretanja iz terminala na lokaciji .exe fajla
 
 1. Pošalji sve faktura .xml fajlove sa lokacije iz .ini FolderPath (ne prolazi kroz podfoldere). Povratne informacije će biti nadovezivane u fajl "Odgovor.txt". 
+Takodje moguće slanje pdf priloga. Sef ogranicava maksimalne 3 priloga, svaki maksimalne velicine 25MB ali po testiranje je to 10M. 
+Iznad taga "<cac:AccountingSupplierParty>" u xml, treba ubaciti interni tag <PRILOG>putanjaDoPriloga1</PRILOG>, za drugi i treci ponoviti tag <PRILOG>putanjaDoPriloga2</PRILOG>.
 -pokretanje
 ".\efakturaDemo.exe PostAllSalesInvoiceFromFolder"
 
