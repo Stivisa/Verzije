@@ -23,6 +23,8 @@ FORMATI FAJLOVA
     Komentar;DokumentValuta;BrojZaRutiranje;SifraDatumaPoreskeObaveze;BrojOsnovnogRacuna;DatumOsnovnogRacuna;BrojNarudzbenice;BrojTendera;BrojUgovora;PIBKupca;NazivKupca;
     AdresaKupca;MestoKupca;PttKupca;ZemljaKupca;RSPIBkupca;VAT;NazivKupca;MatBrKupca;DatumIsporuke;PlaćanjeKod30;BrojRacuna;TekuciRnPlacanja;VrednostStavki;
     VrednostOsnoviceUkupno;IznosRacuna;DatiRabat;AvansnoPlaceno;IznosZaPlacanje;
+-Format "RucnoUnos.txt" : id\n id\n id... (salesID pa u novom redu sledeci..., bez zareza delimitera)
+-Format "OdgovorRucno.txt" : SalesId;PurchaseId;DocumentId(naziv dokumenta);
 
 KORIŠĆENJE POJEDINAČNO
 -navedena su pokretanja iz terminala na lokaciji .exe fajla
@@ -74,6 +76,11 @@ Iznad taga "<cac:AccountingSupplierParty>" u xml, treba ubaciti interni tag <PRI
 -moguće izostaviti datum od (tada vraća sve):
 ".\efakturaDemo.exe prodajaXml Approved"
 ".\efakturaDemo.exe nabavkaXml Approved"
+
+7.Preuzimanje naziva dokumenta na osnovu SalesID. Prolazi svaki sales id fajla "RucnoUnos.txt", i za svaki vraca red u "OdgovorRucno.txt", 
+tako sto nadovezuje ovaj fajl ili kreira ako ne postoji.
+-pokretanje:
+".\efaktura.exe rucnoUnos"
 
 KORIŠĆENJE GRUPNO
 
