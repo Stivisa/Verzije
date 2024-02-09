@@ -1,4 +1,4 @@
-~poslednja verzija efaktura04.exe ,datum 2023-05-07
+~poslednja verzija datum 2024-02-09
 
 PODEŠAVANJE
 -Kreirati i popuniti fajl .ini koji se mora nalaziti na lokaciji .exe fajla.
@@ -16,7 +16,7 @@ NAPOMENE
 
 FORMATI FAJLOVA
 -Format "Odgovor.txt": BrojDokumenta;InvoiceID;PurchaseInvoiceID;SalesInvoiceID;ErrorMessage
--Format "StatusSales.txt": SalesInvoiceId;Status
+-Format "StatusSales.txt": SalesInvoiceId;Status;Comment;
 -Format "Firme.txt" : BugetCompanyNumber;RegistrationCode;VatRegistrationCode;Name
 -Format "OdgovorPdv.txt" : BrojDokumenta;individualVatId;ErrorMessage
 -Format "OdgovorProdaja.txt"/"OdgovorNabavka.txt" (jedan red) : SalesInvoiceID;PurchaseInvoiceID;CreationDate;BrojRacuna;DatumIzdavanjaRacuna;DatumDospecaRacuna;TipDokumenta;
