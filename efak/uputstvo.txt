@@ -1,4 +1,4 @@
-~poslednja verzija datum 2024-02-09
+~poslednja verzija datum 2024-02-20
 
 PODEŠAVANJE
 -Kreirati i popuniti fajl .ini koji se mora nalaziti na lokaciji .exe fajla.
@@ -25,6 +25,7 @@ FORMATI FAJLOVA
     VrednostOsnoviceUkupno;IznosRacuna;DatiRabat;AvansnoPlaceno;IznosZaPlacanje;
 -Format "RucnoUnos.txt" : id\n id\n id... (salesID pa u novom redu sledeci..., bez zareza delimitera)
 -Format "OdgovorRucno.txt" : SalesId;PurchaseId;DocumentId(naziv dokumenta);
+-Format "JediniceMere.txt" : Code;Symbol;NameEng;NameSrbLtn;NameSrbCyr;IsOnShortList;
 
 KORIŠĆENJE POJEDINAČNO
 -navedena su pokretanja iz terminala na lokaciji .exe fajla
@@ -82,6 +83,12 @@ tako sto nadovezuje ovaj fajl ili kreira ako ne postoji.
 -pokretanje:
 ".\efaktura.exe rucnoUnos"
 
+8. Preuzimanje mernih jedinica i kodova (unit code) i smesta u fajl "JediniceMere.txt". Koriste se najcesce za stavke fakture.
+-pokretanje:
+".\efakturaDemo.exe GetUnitMeasures"
+-primer jednog reda iz fajla "Firme.txt":
+H87;;pc;kom;kом;true;
+
 KORIŠĆENJE GRUPNO
 
 1. Spaja korišćenje 1. fakture .xml i 4. pdv individualni .json (isti folder, isti povratni .txt)
@@ -91,6 +98,6 @@ Pošalji sve .xml i .json fajlove sa lokacije iz .ini FolderPath (ne prolazi kro
 -pokretanje, ovo je defaultno/podrazumevano ponašanje
 ".\efakturaDemo.exe"
 
-2. Spaja 2. preuzimanje sales statuse od juče i 3. dovata sve registrovane firme.
+2. Spaja 2. preuzimanje sales statuse od juče i 3. preuzimanje svih registrovanih firmi i 8. preuzimanje mernih jedinica.
 -pokretanje
 ".\efakturaDemo.exe Prijem"
