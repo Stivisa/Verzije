@@ -2,6 +2,7 @@
 
 PODEŠAVANJE
 -Kreirati i popuniti fajl .ini koji se mora nalaziti na lokaciji .exe fajla.
+(moze postojati vise .ini fajlova, svi ce biti obradjeni)
 -ApiKey kopirati sa sajta efaktura, u podešavanjima, api menadžment, ključ za autentifikaciju. Api status treba biti aktivno.
 -FolderPath je lokacija gde su .xml fajlovi koje treba slati.
 -primer izgleda .ini fajla:
