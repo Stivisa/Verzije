@@ -1,4 +1,4 @@
-~poslednja verzija datum 2024-02-20
+~poslednja verzija datum 2024-09-11
 
 PODEŠAVANJE
 -Kreirati i popuniti fajl .ini koji se mora nalaziti na lokaciji .exe fajla.
@@ -19,7 +19,7 @@ FORMATI FAJLOVA
 -Format "Odgovor.txt": BrojDokumenta;InvoiceID;PurchaseInvoiceID;SalesInvoiceID;ErrorMessage
 -Format "StatusSales.txt": SalesInvoiceId;Status;Comment;
 -Format "Firme.txt" : BugetCompanyNumber;RegistrationCode;VatRegistrationCode;Name
--Format "OdgovorPdv.txt" : BrojDokumenta;individualVatId;ErrorMessage
+-Format "OdgovorPdv.txt" : BrojDokumenta;individualVatId;"vat";"vat";ErrorMessage
 -Format "OdgovorProdaja.txt"/"OdgovorNabavka.txt" (jedan red) : SalesInvoiceID;PurchaseInvoiceID;CreationDate;BrojRacuna;DatumIzdavanjaRacuna;DatumDospecaRacuna;TipDokumenta;
     Komentar;DokumentValuta;BrojZaRutiranje;SifraDatumaPoreskeObaveze;BrojOsnovnogRacuna;DatumOsnovnogRacuna;BrojNarudzbenice;BrojTendera;BrojUgovora;PIBKupca;NazivKupca;
     AdresaKupca;MestoKupca;PttKupca;ZemljaKupca;RSPIBkupca;VAT;NazivKupca;MatBrKupca;DatumIsporuke;PlaćanjeKod30;BrojRacuna;TekuciRnPlacanja;VrednostStavki;
@@ -49,7 +49,8 @@ Iznad taga "<cac:AccountingSupplierParty>" u xml, treba ubaciti interni tag <PRI
 -primer jednog reda iz fajla "Firme.txt":
 ;20325763;105150329;BARISTA NOVA
 
-4. Slanje individualnog pdv za firme koje nemaju efakturu. Šalje sve .json fajlove iz .ini VatFolderPath. Povratne informacije nadovezuju u fajl "OdgovorPdv.txt". 
+4. Slanje individualnog pdv za firme koje nemaju efakturu. Šalje sve .json fajlove iz .ini VatFolderPath. Povratne informacije nadovezuju u fajl "OdgovorPdv.txt".
+Podrzava i sef apiV2.
 -pokretanje
 ".\efakturaDemo.exe PostAllVatIndividualFromFolder"
 
