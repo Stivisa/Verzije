@@ -1,4 +1,4 @@
-~poslednja verzija datum 2024-09-11
+~poslednja verzija datum 2024-11-18
 
 PODEŠAVANJE
 -Kreirati i popuniti fajl .ini koji se mora nalaziti na lokaciji .exe fajla.
@@ -20,10 +20,13 @@ FORMATI FAJLOVA
 -Format "StatusSales.txt": SalesInvoiceId;Status;Comment;
 -Format "Firme.txt" : BugetCompanyNumber;RegistrationCode;VatRegistrationCode;Name
 -Format "OdgovorPdv.txt" : BrojDokumenta;individualVatId;"vat";"vat";ErrorMessage
--Format "OdgovorProdaja.txt"/"OdgovorNabavka.txt" (jedan red) : SalesInvoiceID;PurchaseInvoiceID;CreationDate;BrojRacuna;DatumIzdavanjaRacuna;DatumDospecaRacuna;TipDokumenta;
-    Komentar;DokumentValuta;BrojZaRutiranje;SifraDatumaPoreskeObaveze;BrojOsnovnogRacuna;DatumOsnovnogRacuna;BrojNarudzbenice;BrojTendera;BrojUgovora;PIBKupca;NazivKupca;
-    AdresaKupca;MestoKupca;PttKupca;ZemljaKupca;RSPIBkupca;VAT;NazivKupca;MatBrKupca;DatumIsporuke;PlaćanjeKod30;BrojRacuna;TekuciRnPlacanja;VrednostStavki;
-    VrednostOsnoviceUkupno;IznosRacuna;DatiRabat;AvansnoPlaceno;IznosZaPlacanje;
+-Format "OdgovorProdaja.txt"/"OdgovorNabavka.txt" (jedan red) : SalesInvoiceID;PurchaseInvoiceID;BrojFakture;DatumIzdavanja;DatumDospeca;
+TipFakture;ValutaDokumenta;FakturaPeriodOpisKod;PosiljaocPIB;PosiljaocMaticniBroj;
+DatumIsporuke;ModelPozivNaBroj;TaxTotalIznos;TaxOsnovica1;TaxIznos1;TaxOznaka1;TaxPosto1;
+TaxOsnovica2;TaxIznos2;TaxOznaka2;TaxPosto2;TaxOsnovica3;TaxIznos3;TaxOznaka3;TaxPosto3;
+VrednostStavki;VrednostOsnoviceUkupno;IznosRacuna;DatiRabat;AvansnoPlaceno;IznosZaPlacanje;
+-Format "OdgovorNabavnaStavke.txt"/"OdgovorProdajaStavke" (jedan red): SalesInvoiceID;PurchaseInvoiceID;
+Oznaka;Kolicina;UkupanIznos;TeretIndikator;TeretProcenat;TeretIznos;Naziv;OznakaProdavca;TaxOznaka;TaxPosto;Iznos;
 -Format "RucnoUnos.txt" : id\n id\n id... (salesID pa u novom redu sledeci..., bez zareza delimitera)
 -Format "OdgovorRucno.txt" : SalesId;PurchaseId;DocumentId(naziv dokumenta);
 -Format "JediniceMere.txt" : Code;Symbol;NameEng;NameSrbLtn;NameSrbCyr;IsOnShortList;
@@ -66,7 +69,7 @@ Podrzava i sef apiV2.
 ".\efakturaDemo.exe prodajaXml Approved"
 
 6.Preuzimanje bitnih podataka iz xml faktura prodaje/nabavke, sa zadatim statusom i periodom. Povratne informacije nadovezuju u fajl "OdgovorProdaja.txt"/"OdgovorNabavka.txt".
--svi validni postojeći statusi (ako se ne navede vraća sve): New,Draft,Sent,Mistake,Sending,Approved,Rejected,Cancelled,Storno
+-svi validni postojeći statusi: New,Draft,Sent,Mistake,Sending,Approved,Rejected,Cancelled,Storno
 -pokretanje podrazumevano status je Approved, a period je za jučerašnji datum
 ".\efakturaDemo.exe prodajaXml"
 ".\efakturaDemo.exe nabavkaXml"
@@ -76,9 +79,9 @@ Podrzava i sef apiV2.
 -moguće izostaviti datum do (tada vraća sve do danas):
 ".\efakturaDemo.exe prodajaXml Approved 2023-01-01"
 ".\efakturaDemo.exe nabavkaXml Approved 2023-01-01"
--moguće izostaviti datum od (tada vraća sve):
-".\efakturaDemo.exe prodajaXml Approved"
-".\efakturaDemo.exe nabavkaXml Approved"
+-moguće izostaviti datum (tada vraća jučerašnje):
+".\efakturaDemo.exe prodajaXml Storno"
+".\efakturaDemo.exe nabavkaXml Storno"
 
 7.Preuzimanje naziva dokumenta na osnovu SalesID. Prolazi svaki sales id fajla "RucnoUnos.txt", i za svaki vraca red u "OdgovorRucno.txt", 
 tako sto nadovezuje ovaj fajl ili kreira ako ne postoji.
