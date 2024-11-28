@@ -17,11 +17,11 @@ NAPOMENE
 
 FORMATI FAJLOVA
 -Format "Odgovor.txt": BrojDokumenta;InvoiceID;PurchaseInvoiceID;SalesInvoiceID;ErrorMessage
--Format "StatusSales.txt": SalesInvoiceId;Status;Comment;
+-Format "StatusSales.txt": SalesInvoiceId;Status;Comment;Datum;
 -Format "Firme.txt" : BugetCompanyNumber;RegistrationCode;VatRegistrationCode;Name
 -Format "OdgovorPdv.txt" : BrojDokumenta;individualVatId;"vat";"vat";ErrorMessage
 -Format "OdgovorProdaja.txt"/"OdgovorNabavka.txt" (jedan red) : SalesInvoiceID;PurchaseInvoiceID;BrojFakture;DatumIzdavanja;DatumDospeca;
-TipFakture;ValutaDokumenta;FakturaPeriodOpisKod;PosiljaocPIB;PosiljaocMaticniBroj;
+TipFakture;ValutaDokumenta;FakturaPeriodOpisKod;PosiljaocPIB;PosiljaocMaticniBroj;PosiljaocNazivFirme;
 DatumIsporuke;ModelPozivNaBroj;TaxTotalIznos;TaxOsnovica1;TaxIznos1;TaxOznaka1;TaxPosto1;
 TaxOsnovica2;TaxIznos2;TaxOznaka2;TaxPosto2;TaxOsnovica3;TaxIznos3;TaxOznaka3;TaxPosto3;
 VrednostStavki;VrednostOsnoviceUkupno;IznosRacuna;DatiRabat;AvansnoPlaceno;IznosZaPlacanje;
