@@ -1,4 +1,4 @@
-~poslednja verzija datum 2024-11-18
+~poslednja verzija datum 2025-12-19
 
 PODEŠAVANJE
 -Kreirati i popuniti fajl .ini koji se mora nalaziti na lokaciji .exe fajla.
@@ -69,8 +69,12 @@ Podrzava i sef apiV2.
 ".\efakturaDemo.exe prodajaXml Approved"
 
 6.Preuzimanje bitnih podataka iz xml faktura prodaje/nabavke, sa zadatim statusom i periodom. Povratne informacije nadovezuju u fajl "OdgovorProdaja.txt"/"OdgovorNabavka.txt".
--svi validni postojeći statusi: New,Draft,Sent,Mistake,Sending,Approved,Rejected,Cancelled,Storno
--pokretanje podrazumevano status je Approved, a period je za jučerašnji datum
+Odgovarajuce stavke preuzima u fajl "OdgovorNabavnaStavke.txt"/"OdgovorProdajaStavke".
+-svi validni postojeći statusi nabavke: 
+New, Seen, ReNotified, Deleted, Approved, Rejected, Cancelled, Storno, SendingInProgress, Unknown
+-svi validni postojeći statusi prodaja: 
+New, Draft, Sent, Paid, Mistake, OverDue, Archived, Sending, Deleted, Approved, Rejected, Cancelled, Storno, Unknown
+-pokretanje podrazumevano status je Approved, a period je od jučerašnjeg datuma do sada
 ".\efakturaDemo.exe prodajaXml"
 ".\efakturaDemo.exe nabavkaXml"
 -pokretanje sa argumentima
@@ -79,7 +83,7 @@ Podrzava i sef apiV2.
 -moguće izostaviti datum do (tada vraća sve do danas):
 ".\efakturaDemo.exe prodajaXml Approved 2023-01-01"
 ".\efakturaDemo.exe nabavkaXml Approved 2023-01-01"
--moguće izostaviti datum (tada vraća jučerašnje):
+-moguće izostaviti datum (tada vraća od jučerašnjeg datuma do sada):
 ".\efakturaDemo.exe prodajaXml Storno"
 ".\efakturaDemo.exe nabavkaXml Storno"
 
@@ -93,6 +97,20 @@ tako sto nadovezuje ovaj fajl ili kreira ako ne postoji.
 ".\efakturaDemo.exe GetUnitMeasures"
 -primer jednog reda iz fajla "Firme.txt":
 H87;;pc;kom;kом;true;
+
+9. Preuzimanje pdf sales/purchase faktura. Vraca ispis putanje fajla na standardni izlaz. 
+Cuva pdf fajl u folderu 'SalesPDF' ili 'PurchasePDF'. Unutar je fajl imenovan u formatu 'invoiceId-timestamp.pdf'.
+-pokretanje
+".\efakturaDemo.exe GetSalesInvoicePdf salesInvoiceId"
+".\efakturaDemo.exe GetPurchaseInvoicePdf purchaseInvoiceId"
+
+10. Prihvatanje/odbijanje faktura nabavke.
+Vraca ispis na standardni izlaz "Uspešno prihvaćena" ili "Uspešno odbijena" ili u slucaju greske ispis sadrzi "error".
+-pokretanje za prihvatanje, komentar je opcioni:
+.\efakturaDemo.exe AcceptRejectPurchaseInvoice purchaseInvoiceId true comment
+-pokretanje za odbijanje, komentar je obavezan:
+.\efakturaDemo.exe AcceptRejectPurchaseInvoice purchaseInvoiceId false comment
+-obratiti paznju komentar treba da bude izmedju navodnika "duzi komentar"
 
 KORIŠĆENJE GRUPNO
 
