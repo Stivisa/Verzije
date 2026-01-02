@@ -1,0 +1,127 @@
+[
+  {
+    "Code": "H87",
+    "NameSrbLtn": "kom",
+    "NameSrbCyr": "ком"
+  },
+  {
+    "Code": "KGM",
+    "NameSrbLtn": "kg",
+    "NameSrbCyr": "кг"
+  },
+  {
+    "Code": "KMT",
+    "NameSrbLtn": "km",
+    "NameSrbCyr": "км"
+  },
+  {
+    "Code": "GRM",
+    "NameSrbLtn": "g",
+    "NameSrbCyr": "г"
+  },
+  {
+    "Code": "MTR",
+    "NameSrbLtn": "m",
+    "NameSrbCyr": "м"
+  },
+  {
+    "Code": "LTR",
+    "NameSrbLtn": "l",
+    "NameSrbCyr": "л"
+  },
+  {
+    "Code": "TNE",
+    "NameSrbLtn": "t",
+    "NameSrbCyr": "т"
+  },
+  {
+    "Code": "MTK",
+    "NameSrbLtn": "m2",
+    "NameSrbCyr": "м2"
+  },
+  {
+    "Code": "MTQ",
+    "NameSrbLtn": "m3",
+    "NameSrbCyr": "м3"
+  },
+  {
+    "Code": "MIN",
+    "NameSrbLtn": "min",
+    "NameSrbCyr": "мин"
+  },
+  {
+    "Code": "HUR",
+    "NameSrbLtn": "h",
+    "NameSrbCyr": "h"
+  },
+  {
+    "Code": "DAY",
+    "NameSrbLtn": "d",
+    "NameSrbCyr": "д"
+  },
+  {
+    "Code": "MON",
+    "NameSrbLtn": "M",
+    "NameSrbCyr": "М"
+  },
+  {
+    "Code": "ANN",
+    "NameSrbLtn": "god",
+    "NameSrbCyr": "гoд"
+  },
+  {
+    "Code": "KWH",
+    "NameSrbLtn": "kWh",
+    "NameSrbCyr": "kWh"
+  },
+  {
+    "Code": "KMK",
+    "NameSrbLtn": "km2",
+    "NameSrbCyr": "км2"
+  },
+  {
+    "Code": "SEC",
+    "NameSrbLtn": "s",
+    "NameSrbCyr": "с"
+  },
+  {
+    "Code": "ACT",
+    "NameSrbLtn": "akt",
+    "NameSrbCyr": "акт"
+  },
+  {
+    "Code": "H18",
+    "NameSrbLtn": "ha",
+    "NameSrbCyr": "ха"
+  },
+  {
+    "Code": "H16",
+    "NameSrbLtn": "a",
+    "NameSrbCyr": "а"
+  },
+  {
+    "Code": "CMK",
+    "NameSrbLtn": "cm2",
+    "NameSrbCyr": "цм2"
+  },
+  {
+    "Code": "XKI",
+    "NameSrbLtn": "set",
+    "NameSrbCyr": "сет"
+  },
+  {
+    "Code": "KT",
+    "NameSrbLtn": "komplet",
+    "NameSrbCyr": "комплет"
+  },
+  {
+    "Code": "PR",
+    "NameSrbLtn": "par",
+    "NameSrbCyr": "пар"
+  },
+  {
+    "Code": "KWT",
+    "NameSrbLtn": "kW",
+    "NameSrbCyr": "kW"
+  }
+]

@@ -1,0 +1,38 @@
+~poslednja verzija datum 2025-12-19
+
+PODEŠAVANJE
+-Server mora imati instaliran odbc driver Microsoft Access Driver (*.mdb, *.accdb). Instaliraj accessdatabaseengine_X64.exe
+-Kreirati i popuniti fajl .ini koji se mora nalaziti na lokaciji .exe fajla.
+-ApiKey kopirati sa sajta eotpremnica, u podešavanjima
+-MdbPath je lokacija .mdb baze podataka
+-primer izgleda .ini fajla:
+[eOtpremnica]
+ApiKey = "your-api-key-here"
+MdbPath = "C:\path\to\your\database.mdb"
+#opciono
+CreatedXmlPath = "C:\path\to\save\xml\files"
+
+NAPOMENE
+-Mere artikala se automatski prevode u standardne kodove (kom→H87, kg→KGM, l→LTR, itd.)
+
+KORIŠĆENJE POJEDINAČNO
+-navedena su pokretanja iz terminala na lokaciji .exe fajla
+
+1. Slanje otpremnice po broju dokumenta. Aplikacija automatski:
+   - Učitava podatke iz OTPREMNICA i Stavka tabela (spojenih sa Artikal tabelom)
+   - Generiše i šalje XML na API
+   - Proverava statusne izmene
+   - Ažurira OTPREMNICA tabelu sa: IDzahteva, StatusOTP, IDotpremnice ili Greska
+Primer:
+".\eOtpremnica.exe slanjeOtpremnice 001"
+-slanje sa cuvanjem XML (opcioni flag --xml)
+".\eOtpremnica.exe slanjeOtpremnice 001 --xml"
+
+2. Proverava promena status postlatih zahteva.
+   - Ažurira OTPREMNICA tabelu sa: StatusOTP, IDotpremnice ili Greska
+Primer:
+".\eOtpremnica.exe promeneZahteva"
+
+3. Kreiranje xml otpremnice sa datim brojem dokumenta
+Primer:
+".\eOtpremnica.exe napraviXmlOtpremnice 1837206"
