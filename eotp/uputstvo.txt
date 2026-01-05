@@ -1,4 +1,4 @@
-~poslednja verzija datum 2025-12-19
+~poslednja verzija datum 2026-01-05
 
 PODEŠAVANJE
 -Server mora imati instaliran odbc driver Microsoft Access Driver (*.mdb, *.accdb). Instaliraj accessdatabaseengine_X64.exe
@@ -17,6 +17,7 @@ NAPOMENE
 
 KORIŠĆENJE POJEDINAČNO
 -navedena su pokretanja iz terminala na lokaciji .exe fajla
+-logovi, na lokaciji .exe u folderu logs/eOtpremnica.log
 
 1. Slanje otpremnice po broju dokumenta. Aplikacija automatski:
    - Učitava podatke iz OTPREMNICA i Stavka tabela (spojenih sa Artikal tabelom)
@@ -24,15 +25,19 @@ KORIŠĆENJE POJEDINAČNO
    - Proverava statusne izmene
    - Ažurira OTPREMNICA tabelu sa: IDzahteva, StatusOTP, IDotpremnice ili Greska
 Primer:
-".\eOtpremnica.exe slanjeOtpremnice 001"
+".\eotpremnica.exe slanjeOtpremnice 001"
 -slanje sa cuvanjem XML (opcioni flag --xml)
-".\eOtpremnica.exe slanjeOtpremnice 001 --xml"
+".\eotpremnica.exe slanjeOtpremnice 001 --xml"
+-opsirniji log (opcioni flag --log)
+".\eotpremnica.exe slanjeOtpremnice 001 --log"
 
 2. Proverava promena status postlatih zahteva.
    - Ažurira OTPREMNICA tabelu sa: StatusOTP, IDotpremnice ili Greska
 Primer:
-".\eOtpremnica.exe promeneZahteva"
+".\eotpremnica.exe promeneZahteva"
+-opsirniji log (opcioni flag --log)
+".\eotpremnica.exe promeneZahteva --log"
 
 3. Kreiranje xml otpremnice sa datim brojem dokumenta
 Primer:
-".\eOtpremnica.exe napraviXmlOtpremnice 1837206"
+".\eotpremnica.exe napraviXmlOtpremnice 1837206"
