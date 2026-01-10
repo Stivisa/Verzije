@@ -18,6 +18,10 @@ NAPOMENE
 -Nacin otpreme 1: Sopstveni prevoz; 2: Prevoznik; 3: Prevoz primaoca; 4: Lično preuzimanje; 5: Lična dostava;
 -Mere artikala ako moze se automatski prevode u standardne kodove (kom→H87, kg→KGM, l→LTR, itd.), inace default kom→H87
 
+BAZA
+OTPREMNICA --SifraDok--> Stavka --SifraArt--> Artikal
+           --SifraDok--> OTPPRETOVAR
+
 KORIŠĆENJE POJEDINAČNO
 -navedena su pokretanja iz terminala na lokaciji .exe fajla
 -logovi, na lokaciji .exe u folderu logs/eOtpremnica.log
