@@ -13,7 +13,10 @@ MdbPath = "C:\path\to\your\database.mdb"
 CreatedXmlPath = "C:\path\to\save\xml\files"
 
 NAPOMENE
--Mere artikala se automatski prevode u standardne kodove (kom→H87, kg→KGM, l→LTR, itd.)
+-Tezina isporuke mere: 'KGM', 'GRM' ili 'TNE'
+-Zapremina isporuke mere: 'MTQ' ili 'LTR'
+-Nacin otpreme 1: Sopstveni prevoz; 2: Prevoznik; 3: Prevoz primaoca; 4: Lično preuzimanje; 5: Lična dostava;
+-Mere artikala ako moze se automatski prevode u standardne kodove (kom→H87, kg→KGM, l→LTR, itd.), inace default kom→H87
 
 KORIŠĆENJE POJEDINAČNO
 -navedena su pokretanja iz terminala na lokaciji .exe fajla
@@ -23,7 +26,8 @@ KORIŠĆENJE POJEDINAČNO
    - Učitava podatke iz OTPREMNICA i Stavka tabela (spojenih sa Artikal tabelom)
    - Generiše i šalje XML na API
    - Proverava statusne izmene
-   - Ažurira OTPREMNICA tabelu sa: IDzahteva, StatusOTP, IDotpremnice ili Greska
+   - Ažurira OTPREMNICA tabelu sa: DatumIzdavanjaOTP, IDzahteva, StatusOTP, IDotpremnice ili Greska
+   (DatumIzdavanjaOTP je trenutni datum)
 Primer:
 ".\eotpremnica.exe slanjeOtpremnice 001"
 -slanje sa cuvanjem XML (opcioni flag --xml)
