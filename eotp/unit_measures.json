@@ -1,127 +1,202 @@
 [
   {
     "Code": "H87",
+    "Symbol": null,
+    "NameEng": "pc",
     "NameSrbLtn": "kom",
-    "NameSrbCyr": "ком"
+    "NameSrbCyr": "ком",
+    "IsOnShortList": true
   },
   {
     "Code": "KGM",
+    "Symbol": null,
+    "NameEng": "kg",
     "NameSrbLtn": "kg",
-    "NameSrbCyr": "кг"
+    "NameSrbCyr": "кг",
+    "IsOnShortList": true
   },
   {
     "Code": "KMT",
+    "Symbol": null,
+    "NameEng": "km",
     "NameSrbLtn": "km",
-    "NameSrbCyr": "км"
+    "NameSrbCyr": "км",
+    "IsOnShortList": true
   },
   {
     "Code": "GRM",
+    "Symbol": null,
+    "NameEng": "g",
     "NameSrbLtn": "g",
-    "NameSrbCyr": "г"
+    "NameSrbCyr": "г",
+    "IsOnShortList": true
   },
   {
     "Code": "MTR",
+    "Symbol": null,
+    "NameEng": "m",
     "NameSrbLtn": "m",
-    "NameSrbCyr": "м"
+    "NameSrbCyr": "м",
+    "IsOnShortList": true
   },
   {
     "Code": "LTR",
+    "Symbol": null,
+    "NameEng": "l",
     "NameSrbLtn": "l",
-    "NameSrbCyr": "л"
+    "NameSrbCyr": "л",
+    "IsOnShortList": true
   },
   {
     "Code": "TNE",
+    "Symbol": null,
+    "NameEng": "t",
     "NameSrbLtn": "t",
-    "NameSrbCyr": "т"
+    "NameSrbCyr": "т",
+    "IsOnShortList": true
   },
   {
     "Code": "MTK",
+    "Symbol": null,
+    "NameEng": "m2",
     "NameSrbLtn": "m2",
-    "NameSrbCyr": "м2"
+    "NameSrbCyr": "м2",
+    "IsOnShortList": true
   },
   {
     "Code": "MTQ",
+    "Symbol": null,
+    "NameEng": "m3",
     "NameSrbLtn": "m3",
-    "NameSrbCyr": "м3"
+    "NameSrbCyr": "м3",
+    "IsOnShortList": true
   },
   {
     "Code": "MIN",
+    "Symbol": null,
+    "NameEng": "min",
     "NameSrbLtn": "min",
-    "NameSrbCyr": "мин"
+    "NameSrbCyr": "мин",
+    "IsOnShortList": true
   },
   {
     "Code": "HUR",
+    "Symbol": null,
+    "NameEng": "h",
     "NameSrbLtn": "h",
-    "NameSrbCyr": "h"
+    "NameSrbCyr": "h",
+    "IsOnShortList": true
   },
   {
     "Code": "DAY",
+    "Symbol": null,
+    "NameEng": "d",
     "NameSrbLtn": "d",
-    "NameSrbCyr": "д"
+    "NameSrbCyr": "д",
+    "IsOnShortList": true
   },
   {
     "Code": "MON",
+    "Symbol": null,
+    "NameEng": "M",
     "NameSrbLtn": "M",
-    "NameSrbCyr": "М"
+    "NameSrbCyr": "М",
+    "IsOnShortList": true
   },
   {
     "Code": "ANN",
+    "Symbol": null,
+    "NameEng": "y",
     "NameSrbLtn": "god",
-    "NameSrbCyr": "гoд"
+    "NameSrbCyr": "гoд",
+    "IsOnShortList": true
   },
   {
     "Code": "KWH",
+    "Symbol": null,
+    "NameEng": "kWh",
     "NameSrbLtn": "kWh",
-    "NameSrbCyr": "kWh"
+    "NameSrbCyr": "kWh",
+    "IsOnShortList": true
   },
   {
     "Code": "KMK",
+    "Symbol": null,
+    "NameEng": "km2",
     "NameSrbLtn": "km2",
-    "NameSrbCyr": "км2"
+    "NameSrbCyr": "км2",
+    "IsOnShortList": true
   },
   {
     "Code": "SEC",
+    "Symbol": null,
+    "NameEng": "s",
     "NameSrbLtn": "s",
-    "NameSrbCyr": "с"
+    "NameSrbCyr": "с",
+    "IsOnShortList": true
   },
   {
     "Code": "ACT",
+    "Symbol": null,
+    "NameEng": "akt",
     "NameSrbLtn": "akt",
-    "NameSrbCyr": "акт"
+    "NameSrbCyr": "акт",
+    "IsOnShortList": true
   },
   {
     "Code": "H18",
+    "Symbol": null,
+    "NameEng": "ha",
     "NameSrbLtn": "ha",
-    "NameSrbCyr": "ха"
+    "NameSrbCyr": "ха",
+    "IsOnShortList": true
   },
   {
     "Code": "H16",
+    "Symbol": null,
+    "NameEng": "a",
     "NameSrbLtn": "a",
-    "NameSrbCyr": "а"
+    "NameSrbCyr": "а",
+    "IsOnShortList": true
   },
   {
     "Code": "CMK",
+    "Symbol": null,
+    "NameEng": "cm2",
     "NameSrbLtn": "cm2",
-    "NameSrbCyr": "цм2"
+    "NameSrbCyr": "цм2",
+    "IsOnShortList": true
   },
   {
     "Code": "XKI",
+    "Symbol": null,
+    "NameEng": "set",
     "NameSrbLtn": "set",
-    "NameSrbCyr": "сет"
+    "NameSrbCyr": "сет",
+    "IsOnShortList": true
   },
   {
     "Code": "KT",
+    "Symbol": null,
+    "NameEng": "complet",
     "NameSrbLtn": "komplet",
-    "NameSrbCyr": "комплет"
+    "NameSrbCyr": "комплет",
+    "IsOnShortList": true
   },
   {
     "Code": "PR",
+    "Symbol": null,
+    "NameEng": "par",
     "NameSrbLtn": "par",
-    "NameSrbCyr": "пар"
+    "NameSrbCyr": "пар",
+    "IsOnShortList": true
   },
   {
     "Code": "KWT",
+    "Symbol": null,
+    "NameEng": "kW",
     "NameSrbLtn": "kW",
-    "NameSrbCyr": "kW"
+    "NameSrbCyr": "kW",
+    "IsOnShortList": true
   }
 ]

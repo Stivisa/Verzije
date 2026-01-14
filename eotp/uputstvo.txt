@@ -1,4 +1,4 @@
-~poslednja verzija datum 2026-01-07
+~poslednja verzija datum 2026-01-14
 
 PODEŠAVANJE
 -Server mora imati instaliran odbc driver Microsoft Access Driver (*.mdb, *.accdb). Instaliraj accessdatabaseengine_X64.exe
