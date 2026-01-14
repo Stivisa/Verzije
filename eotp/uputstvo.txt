@@ -19,7 +19,7 @@ NAPOMENE
 -Mere artikala ako moze se automatski prevode u standardne kodove (kom→H87, kg→KGM, l→LTR, itd.), inace default kom→H87
 
 BAZA
-OTPREMNICA --SifraDok--> Stavka --SifraArt--> Artikal
+OTPREMNICA --SifraDok--> OTPSTAVKA
            --SifraDok--> OTPPRETOVAR
 
 KORIŠĆENJE POJEDINAČNO
