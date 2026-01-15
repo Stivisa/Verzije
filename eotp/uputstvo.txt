@@ -1,4 +1,4 @@
-~poslednja verzija datum 2026-01-14
+~poslednja verzija datum 2026-01-15
 
 PODEŠAVANJE
 -Server mora imati instaliran odbc driver Microsoft Access Driver (*.mdb, *.accdb). Instaliraj accessdatabaseengine_X64.exe
@@ -39,7 +39,7 @@ Primer:
 -opsirniji log (opcioni flag --log)
 ".\eotpremnica.exe slanjeOtpremnice 001 --log"
 
-2. Proverava promena status postlatih zahteva.
+2. Proverava promena statusa poslatih zahteva: Pending, Error, Success
    - Ažurira OTPREMNICA tabelu sa: StatusOTP, IDotpremnice ili Greska
 Primer:
 ".\eotpremnica.exe promeneZahteva"
@@ -49,3 +49,10 @@ Primer:
 3. Kreiranje xml otpremnice sa datim brojem dokumenta
 Primer:
 ".\eotpremnica.exe napraviXmlOtpremnice 1837206"
+
+4. Proverava promena statusa otpremnica posiljalac: Послато - Sent, Сторнирано - Cancelled, Физички пријем - Delivered, Заплењено - Seized, Усаглашено - Fulfilled
+   - Ažurira OTPREMNICA tabelu sa: StatusOTP
+Primer:
+".\eotpremnica.exe promenePosiljalac"
+-opsirniji log (opcioni flag --log)
+".\eotpremnica.exe Posiljalac --log"
