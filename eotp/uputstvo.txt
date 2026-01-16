@@ -29,7 +29,6 @@ KORIŠĆENJE POJEDINAČNO
 1. Slanje otpremnice po broju dokumenta. Aplikacija automatski:
    - Učitava podatke iz OTPREMNICA i Stavka tabela (spojenih sa Artikal tabelom)
    - Generiše i šalje XML na API
-   - Proverava statusne izmene
    - Ažurira OTPREMNICA tabelu sa: DatumIzdavanjaOTP, IDzahteva, StatusOTP, IDotpremnice ili Greska
    (DatumIzdavanjaOTP je trenutni datum)
 Primer:
