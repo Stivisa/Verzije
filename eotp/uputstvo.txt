@@ -1,4 +1,4 @@
-~poslednja verzija datum 2026-01-15
+~poslednja verzija datum 2026-01-19
 
 PODEŠAVANJE
 -Server mora imati instaliran odbc driver Microsoft Access Driver (*.mdb, *.accdb). Instaliraj accessdatabaseengine_X64.exe
@@ -39,6 +39,7 @@ Primer:
 ".\eotpremnica.exe slanjeOtpremnice 001 --log"
 
 2. Proverava promena statusa poslatih zahteva: Pending, Error, Success
+*kada nije pokretano vise dana, ume server za neki dan da mi odbije zahtev jer puno zahteva saljem, ali dovoljno 2-3 puta pokrenuti i doci ce do danasnjeg dana
    - Ažurira OTPREMNICA tabelu sa: StatusOTP, IDotpremnice ili Greska
 Primer:
 ".\eotpremnica.exe promeneZahteva"
@@ -50,8 +51,16 @@ Primer:
 ".\eotpremnica.exe napraviXmlOtpremnice 1837206"
 
 4. Proverava promena statusa otpremnica posiljalac: Послато - Sent, Сторнирано - Cancelled, Физички пријем - Delivered, Заплењено - Seized, Усаглашено - Fulfilled
+*kada nije pokretano vise dana, ume server za neki dan da mi odbije zahtev jer puno zahteva saljem, ali dovoljno 2-3 puta pokrenuti i doci ce do danasnjeg dana
    - Ažurira OTPREMNICA tabelu sa: StatusOTP
 Primer:
 ".\eotpremnica.exe promenePosiljalac"
 -opsirniji log (opcioni flag --log)
-".\eotpremnica.exe Posiljalac --log"
+".\eotpremnica.exe promenePosiljalac --log"
+
+5. Prikaz pdf otpremnice posiljaoca pomocu defaultnog programa za pdf.
+Zadaje se idOtpremnice, pdf se preuzima i cuva na putanji tmp/pdf. 
+Primer:
+".\eotpremnica.exe pregledPdfPosiljalac bc2eaeaa-850b-4f2e-89a9-220589377d84"
+-opsirniji log (opcioni flag --log)
+".\eotpremnica.exe pregledPdfPosiljalac bc2eaeaa-850b-4f2e-89a9-220589377d84 --log"
