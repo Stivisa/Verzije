@@ -1,4 +1,4 @@
-~poslednja verzija datum 2025-12-19
+~poslednja verzija datum 2026-02-05
 
 PODEŠAVANJE
 -Kreirati i popuniti fajl .ini koji se mora nalaziti na lokaciji .exe fajla.
@@ -98,8 +98,8 @@ tako sto nadovezuje ovaj fajl ili kreira ako ne postoji.
 -primer jednog reda iz fajla "Firme.txt":
 H87;;pc;kom;kом;true;
 
-9. Preuzimanje pdf sales/purchase faktura. Vraca ispis putanje fajla na standardni izlaz. 
-Cuva pdf fajl u folderu 'SalesPDF' ili 'PurchasePDF'. Unutar je fajl imenovan u formatu 'invoiceId-timestamp.pdf'.
+9. Preuzimanje pdf sales/purchase faktura. Otvara pdf fajl u podrazumevanom pdf programu. 
+Cuva pdf fajl u folderu 'SalesPDF' ili 'PurchasePDF'. Unutar je fajl imenovan u formatu 'invoiceId.pdf'.
 -pokretanje
 ".\efakturaDemo.exe GetSalesInvoicePdf salesInvoiceId"
 ".\efakturaDemo.exe GetPurchaseInvoicePdf purchaseInvoiceId"
