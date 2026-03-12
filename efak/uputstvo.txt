@@ -18,6 +18,7 @@ NAPOMENE
 FORMATI FAJLOVA
 -Format "Odgovor.txt": BrojDokumenta;InvoiceID;PurchaseInvoiceID;SalesInvoiceID;ErrorMessage
 -Format "StatusSales.txt": SalesInvoiceId;Status;Comment;Datum;
+-Format "NabavkaStatus.txt": PurchaseInvoiceId;Status;Comment;Datum;
 -Format "Firme.txt" : BugetCompanyNumber;RegistrationCode;VatRegistrationCode;Name
 -Format "OdgovorPdv.txt" : BrojDokumenta;individualVatId;"vat";"vat";ErrorMessage
 -Format "OdgovorProdaja.txt"/"OdgovorNabavka.txt" (jedan red) : SalesInvoiceID;PurchaseInvoiceID;BrojFakture;DatumIzdavanja;DatumDospeca;
@@ -40,11 +41,13 @@ Iznad taga "<cac:AccountingSupplierParty>" u xml, treba ubaciti interni tag <PRI
 -pokretanje
 ".\efakturaDemo.exe PostAllSalesInvoiceFromFolder"
 
-2. Poslednji status sales (prodajne) faktura na odredjeni dan. Povratne informacije će biti nadovezivane u fajl "StatusSales.txt".
--pozivanje bez prosledjivanja datuma uvek vraća statuse za jučerašnji dan
+2. Poslednji status sales (prodajne) faktura na odredjeni dan. Povratne informacije će biti nadovezivane u fajl "StatusSales.txt"/"NabavkaStatus.txt".
+-pozivanje bez prosledjivanja datuma uvek vraća statuse za jučerašnji dan (SEF ne dozvoljava danasnji dan)
 ".\efakturaDemo.exe SalesStatusOnDate"
+".\efakturaDemo.exe PurchaseStatusOnDate"
 -moguće korišćenje i sa prosledjivanjem datuma u formatu YYYY-MM-DD
 ".\efakturaDemo.exe SalesStatusOnDate 2023-01-18"
+".\efakturaDemo.exe PurchaseStatusOnDate 2023-01-18"
 
 3. Sve registrovane firme dohvata i smešta u fajl "Firme.txt".
 -pokretanje
@@ -57,28 +60,34 @@ Podrzava i sef apiV2.
 -pokretanje
 ".\efakturaDemo.exe PostAllVatIndividualFromFolder"
 
-5. Id svake prodajne/nabavne fakture tj salesID/purchaseID iz zadatog perioda i unetog statusa smešta u fajl status.txt (primer "Approved.txt" sadrži niz brojeva, svaki u novom redu)
--svi validni postojeći statusi (ako se ne navede vraća sve): New,Draft,Sent,Mistake,Sending,Approved,Rejected,Cancelled,Storno
--pokretanje podrazumevano vraća Approved(Odobrene) od 01-01 tekuće godine
-".\efakturaDemo.exe PostSalesInvoiceIds"
--pokretanje sa argumentima
-".\efakturaDemo.exe PostSalesInvoiceIds Approved 2023-01-01 2023-02-22"
--moguće izostaviti datum do (tada vraća sve do danas):
-".\efakturaDemo.exe PostSalesInvoiceIds Approved 2023-01-01"
--moguće izostaviti datum od (tada vraća sve):
-".\efakturaDemo.exe prodajaXml Approved"
-
-6.Preuzimanje bitnih podataka iz xml faktura prodaje/nabavke, sa zadatim statusom i periodom. Povratne informacije nadovezuju u fajl "OdgovorProdaja.txt"/"OdgovorNabavka.txt".
-Odgovarajuce stavke preuzima u fajl "OdgovorNabavnaStavke.txt"/"OdgovorProdajaStavke".
+5. Id svake prodajne/nabavne fakture tj salesID/purchaseID iz zadatog perioda i unetog statusa smešta u fajl SalesIDs.txt/PurchaseIDs.txt
+-prazan string "" se navodi da dohvati sve statuse
 -svi validni postojeći statusi nabavke: 
 New, Seen, ReNotified, Deleted, Approved, Rejected, Cancelled, Storno, SendingInProgress, Unknown
 -svi validni postojeći statusi prodaja: 
 New, Draft, Sent, Paid, Mistake, OverDue, Archived, Sending, Deleted, Approved, Rejected, Cancelled, Storno, Unknown
--pokretanje podrazumevano status je Approved, a period je od jučerašnjeg datuma do sada
+-pokretanje podrazumevano svi statusi kao navodjenje "" od 01-01 tekuće godine pa dokle efaktura dozvoljava (najbolje koristiti za periode ne vece od mesec dana)
+".\efakturaDemo.exe PostSalesInvoiceIds"
+".\efakturaDemo.exe PostPurchaseInvoiceIds"
+-pokretanje sa argumentima
+".\efakturaDemo.exe PostSalesInvoiceIds "" 2023-01-01 2023-02-22"
+-moguće izostaviti datum do (tada vraća sve do danas):
+".\efakturaDemo.exe PostSalesInvoiceIds "" 2023-01-01"
+-moguće izostaviti datum od (tada vraća sve):
+".\efakturaDemo.exe PostSalesInvoiceIds Approved"
+
+6.Preuzimanje bitnih podataka iz xml faktura prodaje/nabavke, sa zadatim statusom i periodom. Povratne informacije nadovezuju u fajl "OdgovorProdaja.txt"/"OdgovorNabavka.txt".
+Odgovarajuce stavke preuzima u fajl "OdgovorNabavnaStavke.txt"/"OdgovorProdajaStavke".
+-prazan string "" se navodi da dohvati sve statuse
+-svi validni postojeći statusi nabavke: 
+New, Seen, ReNotified, Deleted, Approved, Rejected, Cancelled, Storno, SendingInProgress, Unknown
+-svi validni postojeći statusi prodaja: 
+New, Draft, Sent, Paid, Mistake, OverDue, Archived, Sending, Deleted, Approved, Rejected, Cancelled, Storno, Unknown
+-pokretanje podrazumevano svi statusi kao navodjenje "", a period je od jučerašnjeg datuma do sada
 ".\efakturaDemo.exe prodajaXml"
 ".\efakturaDemo.exe nabavkaXml"
--pokretanje sa argumentima
-".\efakturaDemo.exe prodajaXml Approved 2023-01-01 2023-02-22"
+-pokretanje sa argumentima ("" - vraca sve status, ili navedi status) (najbolje koristiti za periode ne vece od mesec dana)
+".\efakturaDemo.exe prodajaXml "" 2023-01-01 2023-02-22"
 ".\efakturaDemo.exe nabavkaXml Approved 2023-01-01 2023-02-22"
 -moguće izostaviti datum do (tada vraća sve do danas):
 ".\efakturaDemo.exe prodajaXml Approved 2023-01-01"
@@ -121,6 +130,6 @@ Pošalji sve .xml i .json fajlove sa lokacije iz .ini FolderPath (ne prolazi kro
 -pokretanje, ovo je defaultno/podrazumevano ponašanje
 ".\efakturaDemo.exe"
 
-2. Spaja 2. preuzimanje sales statuse od juče i 3. preuzimanje svih registrovanih firmi i 8. preuzimanje mernih jedinica.
+2. Spaja 2. preuzimanje sales i purchase statuse  od juče i 3. preuzimanje svih registrovanih firmi i 8. preuzimanje mernih jedinica.
 -pokretanje
 ".\efakturaDemo.exe Prijem"
