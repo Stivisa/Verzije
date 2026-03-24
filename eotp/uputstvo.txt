@@ -1,4 +1,4 @@
-~poslednja verzija datum 2026-01-23
+~poslednja verzija datum 2026-03-24
 
 PODEŠAVANJE
 -Server mora imati instaliran odbc driver Microsoft Access Driver (*.mdb, *.accdb). Instaliraj accessdatabaseengine_X64.exe
@@ -17,17 +17,19 @@ NAPOMENE
 -Zapremina isporuke mere: 'MTQ' ili 'LTR'
 -Nacin otpreme 1: Sopstveni prevoz; 2: Prevoznik; 3: Prevoz primaoca; 4: Lično preuzimanje; 5: Lična dostava;
 -Mere artikala ako moze se automatski prevode u standardne kodove (kom→H87, kg→KGM, l→LTR, itd.), inace default kom→H87
+-Stavka polje DodatneInformacije je string(text) u obliku "kolona1: vrednost1;kolona2 : vrednost2" .Delimiteri su ; i :
 
 BAZA
 OTPREMNICA --SifraDok--> OTPSTAVKA
            --SifraDok--> OTPPRETOVAR
+OTPPRIJEMNICAodg -- BrojOTP ili IDotpremnice --> IDprijemnice
 
 KORIŠĆENJE POJEDINAČNO
 -navedena su pokretanja iz terminala na lokaciji .exe fajla
 -logovi, na lokaciji .exe u folderu logs/eOtpremnica.log
 
 1. Slanje otpremnice po broju dokumenta. Aplikacija automatski:
-   - Učitava podatke iz OTPREMNICA i Stavka tabela (spojenih sa Artikal tabelom)
+   - Učitava podatke iz OTPREMNICA i OTPSTAVKA tabela (spojenih sa Artikal tabelom)
    - Generiše i šalje XML na API
    - Ažurira OTPREMNICA tabelu sa: DatumIzdavanjaOTP, IDzahteva, StatusOTP, IDotpremnice ili Greska
    (DatumIzdavanjaOTP je trenutni datum)
@@ -62,3 +64,20 @@ Primer:
 ".\eotpremnica.exe pregledPdfPosiljalac bc2eaeaa-850b-4f2e-89a9-220589377d84"
 -opsirniji log (opcioni flag --log)
 ".\eotpremnica.exe pregledPdfPosiljalac bc2eaeaa-850b-4f2e-89a9-220589377d84 --log"
+
+6. Prikaz pdf prijemnice pomocu defaultnog programa za pdf.
+Zadaje se IDprijemnice, pdf se preuzima i cuva na putanji tmp/pdf.
+Primer:
+".\eotpremnica.exe pregledPdfPosiljalacPrijemnica bc2eaeaa-850b-4f2e-89a9-220589377d84"
+-opsirniji log (opcioni flag --log)
+".\eotpremnica.exe pregledPdfPosiljalacPrijemnica bc2eaeaa-850b-4f2e-89a9-220589377d84 --log"
+
+7. Prihvatanje ili odbijanje pristigle prijemnice.
+Ideja nakon sto kupac kaze fizicki prijem otpremnice i napravi na osnovu nje prijemnicu.
+Naredba 4.promenePosiljalac ce pokupiti podatke prijemnice, koju mozete pregledati pdf naredbom 6.pregledPdfPosiljalacPrijemnica.
+Nakon toga ovom naredbom mozete prijemnicu prihvatiti ili odbiti.
+Slicno kao za otpremnicu i ovde postoji status prijemnice kao i zahteva i eventualna greska, to se nalazi u tabeli OTPPRIJEMNICAodg.
+Primer prihvatanja, za odbijanje se na kraju navodi 'ne':
+".\eotpremnica.exe odgovorPosiljalacPrijemnica bc2eaeaa-850b-4f2e-89a9-220589377d84 da"
+-opsirniji log (opcioni flag --log)
+".\eotpremnica.exe odgovorPosiljalacPrijemnica bc2eaeaa-850b-4f2e-89a9-220589377d84 da --log"
